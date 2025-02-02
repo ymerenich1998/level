@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QGroupBox, \
     QButtonGroup, QRadioButton, QPushButton, QLabel, QSpinBox
 from PyQt5.QtCore import Qt
-from random import shuffle # перемішуватимемо відповіді у картці питання
+
 
 card_width, card_height = 600, 500 # початкові розміри вікна "картка"
 win_card = QWidget()
@@ -91,30 +91,4 @@ layout_card.setSpacing(5) # прогалини між вмістом
 text_wrong = 'Неправильно'
 text_correct = 'Правильно'
 
-# у цій версії напишемо в коді одне запитання та відповіді до нього
-# відповідні змінні поля майбутнього об'єкта "form" (тобто. анкета)
-frm_question = 'Яблуко'
-frm_right = 'apple'
-frm_wrong1 = 'application'
-frm_wrong2 = 'building'
-frm_wrong3 = 'caterpillar'
-
-radio_list = [rbtn_1, rbtn_2, rbtn_3, rbtn_4]
-shuffle(radio_list)
-answer = radio_list[0] # ми не знаємо, який це з радіобаттонів, але можемо покласти сюди правильну відповідь і запам'ятати це
-wrong_answer1, wrong_answer2, wrong_answer3 = radio_list[1], radio_list[2], radio_list[3]
-
-# віджети заповнюються даними:
-def show_data():
-   ''' показує потрібну інформацію на екрані '''
-   # об'єднаємо у функцію схожі дії
-   lb_Question.setText(frm_question)
-   lb_Correct.setText(frm_right)
-   answer.setText(frm_right)
-   wrong_answer1.setText(frm_wrong1)
-   wrong_answer2.setText(frm_wrong2)
-   wrong_answer3.setText(frm_wrong3)
-    
-
 win_card.setLayout(layout_card)
-win_card.show()
