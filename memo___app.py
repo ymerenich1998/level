@@ -97,8 +97,16 @@ def rest():
     win_card.show()
 
 def click_MENU():
-    win_menu.show()
-    win_card.hide()
+   if cur_q.count_asked  == 0:
+      c = 0
+   else:
+      c = cur_q.count_right / cur_q.count_asked * 100
+   text = f"Разів задано: {cur_q.count_asked}\n" \
+          f"Правильних відповідей: {cur_q.count_right}\n" \
+          f"Відсоток правильних відповідей: {c:.2f}%"
+   lb_statistic.setText(text)
+   win_menu.show()
+   win_card.hide()
 
 def clack_BACK():
     win_menu.hide()
