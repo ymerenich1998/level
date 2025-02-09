@@ -91,7 +91,7 @@ def click_OK(self):
       show_question()
       new_question()
 
-def rest():
+def click_REST():
     win_card.hide()
     sleep(box_Minutes.value() * 60)
     win_card.show()
@@ -108,17 +108,35 @@ def click_MENU():
    win_menu.show()
    win_card.hide()
 
-def clack_BACK():
+def click_BACK():
     win_menu.hide()
     win_card.show()
+
+def click_CLEAR():
+    le_question.clear()
+    le_right_ans.clear()
+    le_wrong_ans1.clear()
+    le_wrong_ans2.clear()
+    le_wrong_ans3.clear()
+
+def click_ADD_QUESTION():
+    q = le_question.text()
+    a = le_right_ans.text()
+    w1 = le_wrong_ans1.text()
+    w2 = le_wrong_ans2.text()
+    w3 = le_wrong_ans3.text()
+    question_list.append(Question(q, a, w1, w2, w3))
+    click_CLEAR()
 
 show_question()
 new_question()
 
 btn_OK.clicked.connect(click_OK)
-btn_Sleep.clicked.connect(rest)
+btn_Sleep.clicked.connect(click_REST)
 btn_Menu.clicked.connect(click_MENU)
-btn_Back.clicked.connect(clack_BACK)
+btn_Back.clicked.connect(click_BACK)
+btn_clear.clicked.connect(click_CLEAR)
+btn_add_question.clicked.connect(click_ADD_QUESTION)
 
 win_card.show()
 app.exec_()
