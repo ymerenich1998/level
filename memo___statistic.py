@@ -3,8 +3,7 @@ from PyQt5.QtWidgets import QWidget, QLineEdit,QHBoxLayout, QVBoxLayout, QPushBu
 
 win_test = QWidget()
 
-win_test.caption = 'Повна статистика'
-
+win_test.setWindowTitle('Повна статистика')
 Tlb_header_stat = QLabel('Статистика')
 Tlb_header_stat.setStyleSheet('font-size: 19px; font-weight: bold;')
 Tlb_statistic = QLabel()

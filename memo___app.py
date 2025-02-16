@@ -6,7 +6,7 @@ app = QApplication([])
 from time import sleep
 from memo___main import *
 from memo___menu import *
-from memo___test import *
+from memo___statistic import *
 
 class Question():
     def __init__(self, question, answer, wrong_ans1, wrong_ans2, wrong_ans3):

@@ -1,8 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QLineEdit,QHBoxLayout, QVBoxLayout, QPushButton, QLabel
 
 win_menu = QWidget()
-
-win_menu.caption = 'Додавання запитань'
+win_menu.setWindowTitle('Додавання запитань')
 
 lb_quest = QLabel('Введіть запитання:')
 lb_right_ans = QLabel('Введіть вірну відповідь:')
