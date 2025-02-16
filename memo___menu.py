@@ -2,6 +2,8 @@ from PyQt5.QtWidgets import QWidget, QLineEdit,QHBoxLayout, QVBoxLayout, QPushBu
 
 win_menu = QWidget()
 
+win_menu.caption = 'Додавання запитань'
+
 lb_quest = QLabel('Введіть запитання:')
 lb_right_ans = QLabel('Введіть вірну відповідь:')
 lb_wrong_ans1 = QLabel('Введіть першу хибну відповідь')
@@ -43,12 +45,15 @@ btn_clear = QPushButton('Очистити')
 hl_buttons = QHBoxLayout()
 hl_buttons.addWidget(btn_add_question)
 hl_buttons.addWidget(btn_clear)
-
+#
+btn_test = QPushButton('Повна статистика')
+#
 vl_res = QVBoxLayout()
 vl_res.addLayout(hl_question)
 vl_res.addLayout(hl_buttons)
 vl_res.addWidget(lb_header_stat)
 vl_res.addWidget(lb_statistic)
+vl_res.addWidget(btn_test)
 vl_res.addWidget(btn_Back)
 
 win_menu.setLayout(vl_res)

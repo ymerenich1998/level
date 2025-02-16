@@ -6,6 +6,7 @@ app = QApplication([])
 from time import sleep
 from memo___main import *
 from memo___menu import *
+from memo___test import *
 
 class Question():
     def __init__(self, question, answer, wrong_ans1, wrong_ans2, wrong_ans3):
@@ -39,12 +40,12 @@ def new_question():
    lb_Question.setText(cur_q.question)
    lb_Correct.setText(cur_q.answer)
    shuffle(radio_list)
-   radio_list[0].setText(cur_q.answer)    
+   radio_list[0].setText(cur_q.answer)
    radio_list[1].setText(cur_q.wrong_answer1)
    radio_list[2].setText(cur_q.wrong_answer2)
    radio_list[3].setText(cur_q.wrong_answer3)
-    
-      
+
+
 # Результат роботи цього модуля: віджети поміщені всередину layout_card, який можна призначити вікну.
 def show_result():
    ''' показати панель відповідей '''
@@ -128,6 +129,29 @@ def click_ADD_QUESTION():
     question_list.append(Question(q, a, w1, w2, w3))
     click_CLEAR()
 
+def click_test():
+   _=question_list.__len__()-1
+   i=0
+   text="\n"
+   while _>=i:
+      qu = question_list[i]
+      if qu.count_asked  == 0:
+         c = 0
+      else:
+         c = qu.count_right / qu.count_asked * 100
+      text += f"{qu.question}\n"\
+              f"Разів задано: {qu.count_asked}\n" \
+              f"Правильних відповідей: {qu.count_right}\n" \
+              f"Відсоток правильних відповідей: {c:.2f}%\n\n"
+      i+=1
+   Tlb_statistic.setText(text)
+   win_menu.hide()
+   win_test.show()
+
+def Tclick_BACK():
+   win_test.hide()
+   win_menu.show()
+
 show_question()
 new_question()
 
@@ -137,6 +161,8 @@ btn_Menu.clicked.connect(click_MENU)
 btn_Back.clicked.connect(click_BACK)
 btn_clear.clicked.connect(click_CLEAR)
 btn_add_question.clicked.connect(click_ADD_QUESTION)
+btn_test.clicked.connect(click_test)
+Tbtn_Back.clicked.connect(Tclick_BACK)
 
 win_card.show()
 app.exec_()
