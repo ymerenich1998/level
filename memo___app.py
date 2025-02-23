@@ -9,30 +9,35 @@ from memo___menu import *
 from memo___statistic import *
 
 class Question():
+   # конструктор класу
     def __init__(self, question, answer, wrong_ans1, wrong_ans2, wrong_ans3):
         self.question = question 
         self.answer = answer 
         self.wrong_answer1 = wrong_ans1 
         self.wrong_answer2 = wrong_ans2 
         self.wrong_answer3 = wrong_ans3 
-        self.actual = True 
         self.count_asked = 0 
         self.count_right = 0 
+   # методи для підрахунку правильних та неправильних відповідей
     def got_right(self):
         self.count_asked += 1
         self.count_right += 1
+   # метод для підрахунку неправильних відповідей
     def got_wrong(self):
         self.count_asked += 1
-
+# створюємо питання
 q1 = Question('Яблуко', 'apple', 'application', 'pineapple', 'apply')
 q2 = Question('Дім', 'house', 'horse', 'hurry', 'hour')
 q3 = Question('Миша', 'mouse', 'mouth', 'muse', 'museum')
 q4 = Question('Число', 'number', 'digit', 'amount', 'summary')
 
+# список питань
 question_list = [q1, q2, q3, q4]
 
+# тексти для відображення результату
 radio_list = [rbtn_1, rbtn_2, rbtn_3, rbtn_4]
 
+# тексти для відображення результату
 def new_question():
    ''' перемішує питання у картці питання '''
    global cur_q
@@ -53,6 +58,7 @@ def show_result():
    AnsGroupBox.show()
    btn_OK.setText('Наступне питання')
 
+# Функції для показу панелей
 def show_question():
    ''' показати панель питань '''
    RadioGroupBox.show()
@@ -66,6 +72,7 @@ def show_question():
    rbtn_4.setChecked(False)
    RadioGroup.setExclusive(True) # повернули обмеження, тепер лише одна радіокнопка може бути вибрана
 
+# Функції для перевірки відповідей
 def check_result():
    ''' перевірка, чи правильна відповідь обрана
    якщо відповідь була обрана, то напис "правильно/неправильно" набуває потрібного
@@ -92,11 +99,13 @@ def click_OK(self):
       show_question()
       new_question()
 
+# Функції для відпочинку
 def click_REST():
     win_card.hide()
     sleep(box_Minutes.value() * 60)
     win_card.show()
 
+# Функції для показу меню
 def click_MENU():
    if cur_q.count_asked  == 0:
       c = 0
@@ -109,10 +118,12 @@ def click_MENU():
    win_menu.show()
    win_card.hide()
 
+# Функції для повернення до картки питання
 def click_BACK():
     win_menu.hide()
     win_card.show()
 
+# Функції для очищення полів вводу
 def click_CLEAR():
     le_question.clear()
     le_right_ans.clear()
@@ -120,6 +131,7 @@ def click_CLEAR():
     le_wrong_ans2.clear()
     le_wrong_ans3.clear()
 
+# Функції для додавання питань
 def click_ADD_QUESTION():
     q = le_question.text()
     a = le_right_ans.text()
@@ -129,6 +141,7 @@ def click_ADD_QUESTION():
     question_list.append(Question(q, a, w1, w2, w3))
     click_CLEAR()
 
+# Функції для показу статистики
 def click_test():
    _=question_list.__len__()-1
    i=0
@@ -148,13 +161,16 @@ def click_test():
    win_menu.hide()
    win_test.show()
 
+# Функції для повернення до меню
 def Tclick_BACK():
    win_test.hide()
    win_menu.show()
 
+# показати перше питання
 show_question()
 new_question()
 
+# підключаємо функції до кнопок
 btn_OK.clicked.connect(click_OK)
 btn_Sleep.clicked.connect(click_REST)
 btn_Menu.clicked.connect(click_MENU)
@@ -164,5 +180,7 @@ btn_add_question.clicked.connect(click_ADD_QUESTION)
 btn_test.clicked.connect(click_test)
 Tbtn_Back.clicked.connect(Tclick_BACK)
 
+# показуємо вікно
 win_card.show()
+# запускаємо програму
 app.exec_()

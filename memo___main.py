@@ -1,13 +1,18 @@
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QGroupBox, \
     QButtonGroup, QRadioButton, QPushButton, QLabel, QSpinBox
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QFont
 
-
+# вікно для відображення питань
 card_width, card_height = 600, 500 # початкові розміри вікна "картка"
 win_card = QWidget()
 win_card.resize(card_width, card_height)
 win_card.move(300, 300)
 win_card.setWindowTitle('Memory Card')
+
+font = QFont()
+font.setPointSize(11)
+win_card.setFont(font)
 
 # віджети, які треба буде розмістити:
 btn_Menu = QPushButton('Меню') # кнопка повернення до основного вікна
